@@ -1,0 +1,79 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+/* Your custom styles below */
+.sticky-card {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* I've removed the .magnetic-link styles 
+  as we'll be doing this with Framer Motion.
+*/
+
+/* REMOVED this block which was causing scrolling issues:
+  html, body {
+    height: 100%;
+    overflow: hidden; 
+  }
+*/
+
+.bg-zinc-950 {
+  background-color: #0a0a0a !important;
+}
+
+/* These Lenis styles are fine, but often not even necessary */
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth > div {
+  min-height: 100%;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-slow {
+  animation: marquee 15s linear infinite;
+  /* This flex-shrink-0 is VITAL for the children
+    to prevent them from shrinking.
+  */
+  & > * {
+    flex-shrink: 0;
+  }
+}
+
+.animate-marquee-reverse-slow {
+  animation: marquee-reverse 15s linear infinite;
+  /* This flex-shrink-0 is VITAL for the children
+    to prevent them from shrinking.
+  */
+  & > * {
+    flex-shrink: 0;
+  }
+}
